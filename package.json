@@ -1,0 +1,26 @@
+{
+  "name": "site-scss",
+  "version": "1.0.0",
+  "description": "Estilos baseados em Bootstrap para os sites do Documentário",
+  "keywords": [
+    "Stylesheet"
+  ],
+  "homepage": "https://github.com/arqtrad/site-scss#readme",
+  "bugs": {
+    "url": "https://github.com/arqtrad/site-scss/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/arqtrad/site-scss.git"
+  },
+  "license": "ISC",
+  "author": "Pedro P. Palazzo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}

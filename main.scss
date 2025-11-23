@@ -125,7 +125,7 @@ $legend-font-weight:   400;
 @import "bootstrap/scss/tables";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
-@import "bootstrap/scss/transitions";
+// @import "bootstrap/scss/transitions";
 // @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/button-group";
 @import "bootstrap/scss/nav";
@@ -134,7 +134,7 @@ $legend-font-weight:   400;
 @import "bootstrap/scss/breadcrumb";
 // @import "bootstrap/scss/accordion";
 @import "bootstrap/scss/pagination";
-// @import "bootstrap/scss/badge";
+@import "bootstrap/scss/badge";
 // @import "bootstrap/scss/alert";
 // @import "bootstrap/scss/progress";
 @import "bootstrap/scss/list-group";
@@ -145,7 +145,7 @@ $legend-font-weight:   400;
 @import "bootstrap/scss/popover";
 // @import "bootstrap/scss/carousel";
 // @import "bootstrap/scss/spinners";
-@import "bootstrap/scss/offcanvas"; // Requires transitions
+// @import "bootstrap/scss/offcanvas"; // Requires transitions
 // @import "bootstrap/scss/placeholders";
 
 // Helpers
@@ -195,14 +195,6 @@ table {
   @extend .mt-0;
 }
 
-article li::marker {
-  content: "› ";
-}
-
-article section > hr {
-  @extend .d-none;
-}
-
 // figures and quotes {{{3
 section > figure {
   @extend .figure;
@@ -216,20 +208,10 @@ section > figure {
   }
 }
 
-video,
-iframe {
-  @extend img;
-}
-
 figcaption,
 blockquote > footer {
   @extend .figure-caption;
   @extend .p-1;
-}
-
-figcaption {
-  font-family: $font-family-legend;
-  @extend .fs-6;
 }
 
 article figcaption,
@@ -284,10 +266,15 @@ h6 {
 }
 
 h6 {
-  color: $body-color;
+  color: var(--bs-body-color);
   @extend .w-auto;
   @extend .fw-normal;
   @extend .text-start;
+}
+
+.list-group-item .h6 {
+  font-family: $font-family-narrow;
+  @extend .fw-bold;
 }
 
 article {
@@ -639,13 +626,31 @@ blockquote > footer {
 .page-footer {
   @extend .my-4;
   @extend .border-top;
+  @extend .row;
+  @extend .row-cols-1;
+  @extend .row-cols-sm-2;
+  @extend .row-cols-md-3;
+  @extend .row-cols-xl-4;
+  @extend .pt-2;
 }
 
 div.mt-0 > footer.page-footer {
   @extend .mt-0;
 }
 
-// Tufte, crossref and CSL classes {{{2
+.footer-group {
+  @extend .border;
+  @extend .border-0;
+  @extend .list-group;
+}
+
+.footer-group li {
+  @extend .border;
+  @extend .border-0;
+  @extend .list-group-item;
+}
+
+// Pandoc, crossref and CSL classes {{{2
 // Columns {{{3
 main {
   @extend .d-md-flex;
@@ -665,11 +670,13 @@ article {
 article > section,
 .lead,
 .page__title .lead,
-.page__title--overlay .lead {
+.page__title--overlay .lead,
+.splash #refs,
+.wide #refs {
   @extend .col-lg-8;
 }
 
-.wide section {
+.wide {
   @extend .col-lg-12;
 }
 
@@ -693,6 +700,13 @@ body.splash article > section > h2 {
   @extend .text-center;
   @extend .mx-auto;
   max-width: 100%;
+}
+
+#refs {
+  @include clearfix;
+  h2 {
+    @extend .text-center;
+  }
 }
 
 // typography {{{3
@@ -898,16 +912,15 @@ label.margin-toggle:not(.sidenote-number) {
 .half,
 .third {
   img {
-    @extend .p-1;
     float: left;
     clear: none;
-    @include media-breakpoint-up(lg) {
-      width: 50%;
-    }
   }
-  figcaption {
-    float: left !important;
-    clear: left;
+}
+
+.half img,
+img.half {
+  @include media-breakpoint-up(lg) {
+    width: 50%;
   }
 }
 
@@ -920,17 +933,16 @@ img.third {
 
 .full {
   @include media-breakpoint-up(lg) {
-    max-width: 150%;
     width: 150%;
+    figcaption {
+      margin-right: 33.33%;
+    }
   }
 }
 
 .align-right {
   img {
     @extend .p-1;
-    @include media-breakpoint-up(lg) {
-      width: 100%;
-    }
   }
   @include media-breakpoint-up(lg) {
     float: right;
@@ -940,13 +952,6 @@ img.third {
     figcaption {
       width: 100%;
     }
-  }
-}
-
-.outset + figcaption {
-  @include media-breakpoint-up(lg) {
-    margin-right: -50%;
-    padding-top: 0 !important;
   }
 }
 
@@ -1228,9 +1233,10 @@ nav[data-toggle="toc"] {
 h2.tl-headline-title {
   @extend h2;
   font-family: $headings-font-family !important;
+  font-style: italic;
   font-variant-numeric: lining-nums !important;
   text-transform: unset !important;
-  font-size: 3rem !important;
+  font-size: 1.7rem !important;
   color: $primary !important;
   @media (prefers-color-scheme: dark) {
     color: $light !important;
