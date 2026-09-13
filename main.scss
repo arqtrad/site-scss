@@ -553,6 +553,12 @@ ul.navbar-nav {
   }
 }
 
+.collapse:not(.show) {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
 li.nav-item {
   @extend .mx-auto;
   @extend .mx-lg-0;
@@ -625,13 +631,13 @@ blockquote > footer {
 // Footer {{{3
 .page-footer {
   @extend .my-4;
-  @extend .border-top;
-  @extend .row;
-  @extend .row-cols-1;
-  @extend .row-cols-sm-2;
-  @extend .row-cols-md-3;
-  @extend .row-cols-xl-4;
   @extend .pt-2;
+  @extend .border-top;
+  @extend .d-lg-flex;
+  @extend .flex-column;
+  @extend .flex-lg-row;
+  @extend .justify-content-between;
+  @extend .align-items-baseline;
 }
 
 div.mt-0 > footer.page-footer {
@@ -639,9 +645,12 @@ div.mt-0 > footer.page-footer {
 }
 
 .footer-credits {
-  @extend .mb-auto;
+  @extend .d-inline-flex;
   @extend .mt-2;
   @extend .pt-2;
+  img {
+    @extend .pb-1;
+  }
   h3.h4 {
     display: inline;
     @extend .m-2;
@@ -650,7 +659,6 @@ div.mt-0 > footer.page-footer {
 
 .footer-group {
   display: inline;
-  @extend .border;
   @extend .border-0;
   @extend .list-inline;
 }
@@ -660,6 +668,28 @@ div.mt-0 > footer.page-footer {
   @extend .border-0;
   @extend .m-2;
   @extend .list-inline-item;
+}
+
+#footer-nav {
+  ul {
+    @extend .list-group;
+    @extend .list-group-horizontal;
+    @extend .border-top-0;
+    @extend .border-bottom-0;
+    @extend .border-start-0;
+    @extend .border-end-0;
+    li {
+      @extend .list-group-item;
+      @extend .list-inline-item;
+      @extend .border-0;
+      i {
+        @extend .fs-4;
+      }
+      span.item-label {
+        @extend .ps-1;
+      }
+    }
+  }
 }
 
 // Pandoc, crossref and CSL classes {{{2
