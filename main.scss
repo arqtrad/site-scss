@@ -716,9 +716,6 @@ body.splash article > section > h2 {
 
 #refs {
   @include clearfix;
-  h2 {
-    @extend .text-center;
-  }
 }
 
 // typography {{{3
