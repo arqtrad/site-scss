@@ -642,7 +642,7 @@ blockquote > footer {
 
 .nofooter .page-footer {
   @include media-breakpoint-down(md) {
-    display: none;
+    display: none !important;
   }
 }
 
